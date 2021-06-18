@@ -11,18 +11,30 @@
         >
           <v-img src="https://via.placeholder.com/300.png" height="200"></v-img>
 
-          <v-card-text>
+          <v-card-text class="pt-3">
             <h2 class="text-h6 primary--text" v-text="product.name"></h2>
-            Travel to the best outdoor experience on planet Earth. A vacation you will never forget!
+            <p class="font-weight-bold mt-1">{{ product.price | currency }}</p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           </v-card-text>
 
-          <v-card-text color="" class="font-weight-bold" v-text="product.category"></v-card-text>
+          <v-card-text class="font-weight-bold py-0" v-text="product.category"></v-card-text>
 
+          <v-card-actions>
+              <v-spacer></v-spacer>
+
+              <v-btn icon color="red" disabled>
+                <v-icon>mdi-heart</v-icon>
+              </v-btn>
+
+              <v-btn icon color="error" rounded @click="addToCart(product)" v-if="disabled">
+                <v-icon>mdi-cart-minus</v-icon>
+              </v-btn>
+
+              <v-btn icon color="primary" rounded @click="addToCart(product)" v-else>
+                <v-icon>mdi-cart-plus</v-icon>
+              </v-btn>
+            </v-card-actions>
           <v-card-title>
-            <v-btn color="primary" rounded>
-              <v-icon class="mr-2">mdi-cart</v-icon>
-              Add to cart
-            </v-btn>
           </v-card-title>
         </v-card>
       </v-col>
@@ -37,15 +49,22 @@ import DummyLoader from '@/components/DummyLoader'
 export default {
   name: 'ProductList',
   computed: {
-    ...mapState(['products', 'count']),
+    ...mapState(['products']),
+    // allProducts() {
+    //   return this.$store.getters.allProducts
+    // }
   },
   data() {
     return {
-      timeOut: true
+      timeOut: true,
+      disabled: false
     }
   },
   mounted() {
     setTimeout(() => (this.timeOut = false), 3000);
+  },
+  methods: {
+    addToCart: product => this.$store.dispatch('addToCart', product)
   },
   components: {
     DummyLoader

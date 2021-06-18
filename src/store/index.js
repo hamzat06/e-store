@@ -57,19 +57,20 @@ export default new Vuex.Store({
         category: 'Console'
       }
     ],
-    count: 0
+    inCart: []
   },
   getters:{
-    allProducts: state => {
-      return state.products
-    }
+    allProducts: state => state.products,
+    inCart: state => state.inCart
   },
   mutations: {
-    increment(state) {
-      state.count++
-    }
+    increment: state => state.count++,
+    ADD_TO_CART: (state, product) => state.inCart.push(product)
   },
   actions: {
+    addToCart(context, product) {
+      context.commit('ADD_TO_CART', product)
+    }
   },
   modules: {
   }

@@ -5,7 +5,7 @@
         <v-skeleton-loader
           class="mx-auto"
           max-width="344"
-          type="card"
+          type="card, article, actions"
         ></v-skeleton-loader>
       </v-card>
     </v-col>
@@ -14,7 +14,7 @@
         <v-skeleton-loader
           class="mx-auto"
           max-width="344"
-          type="card"
+          type="card, article, actions"
         ></v-skeleton-loader>
       </v-card>
     </v-col>
@@ -23,7 +23,7 @@
         <v-skeleton-loader
           class="mx-auto"
           max-width="344"
-          type="card"
+          type="card, article, actions"
         ></v-skeleton-loader>
       </v-card>
     </v-col>
@@ -32,7 +32,7 @@
         <v-skeleton-loader
           class="mx-auto"
           max-width="344"
-          type="card"
+          type="card, article, actions"
         ></v-skeleton-loader>
       </v-card>
     </v-col>
@@ -41,7 +41,7 @@
         <v-skeleton-loader
           class="mx-auto"
           max-width="344"
-          type="card"
+          type="card, article, actions"
         ></v-skeleton-loader>
       </v-card>
     </v-col>
@@ -50,7 +50,7 @@
         <v-skeleton-loader
           class="mx-auto"
           max-width="344"
-          type="card"
+          type="card, article, actions"
         ></v-skeleton-loader>
       </v-card>
     </v-col>
@@ -59,7 +59,7 @@
         <v-skeleton-loader
           class="mx-auto"
           max-width="344"
-          type="card"
+          type="card, article, actions"
         ></v-skeleton-loader>
       </v-card>
     </v-col>
@@ -68,7 +68,7 @@
         <v-skeleton-loader
           class="mx-auto"
           max-width="344"
-          type="card"
+          type="card, article, actions"
         ></v-skeleton-loader>
       </v-card>
     </v-col>

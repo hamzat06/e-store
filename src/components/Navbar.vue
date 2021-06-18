@@ -4,24 +4,50 @@
     color="primary"
     dark
   >
-    <v-toolbar-title class="font-weight-bold">E-Shop</v-toolbar-title>
+      <router-link
+          to="/"
+          tag="v-toolbar"
+          class="cursor-pointer"
+      >
+        <v-toolbar-title class="font-weight-bold" to="/">E-Shop</v-toolbar-title>
+      </router-link>
 
     <v-spacer></v-spacer>
 
-    <v-btn
-      text
-    >
-      <v-icon>mdi-cart</v-icon>
-      <span class="ml-2">Cart</span>
-    </v-btn>
+
+      <v-btn
+        text
+        to="/cart"
+      >
+        <v-badge
+          color="red"
+          :content="inCart.length"
+          overlap
+          v-if="inCart.length > 0"
+        >
+          <v-icon>mdi-cart</v-icon>
+        </v-badge>
+        <v-icon v-else>mdi-cart</v-icon>
+        <span class="ml-2">Cart</span>
+      </v-btn>
   </v-app-bar>
 </template>
 
 <script>
+// import { mapState } from 'vuex'
+
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  computed: {
+    inCart() {
+      return this.$store.getters.inCart
+    },
+  },
 }
 </script>
 
 <style lang="css" scoped>
+.cursor-pointer {
+  cursor: pointer;
+}
 </style>
