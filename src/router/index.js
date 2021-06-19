@@ -18,10 +18,10 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue'),
     children: [
-      // UserHome will be rendered inside User's <router-view>
-      // when /user/:id is matched
+
       {
         path: '/checkout',
+        name: 'Checkout',
         component: () => import(/* webpackChunkName: "checkout" */ '../views/Checkout.vue')
       }
 

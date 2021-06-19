@@ -1,7 +1,7 @@
 <template lang="html">
-  <div>
-    <h1 class="text-h2 black--text">Checkout</h1>
-  </div>
+  <v-container>
+    <h2 class="text-h5">Checkout page</h2>
+  </v-container>
 </template>
 
 <script>

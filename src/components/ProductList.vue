@@ -26,7 +26,7 @@
                 <v-icon>mdi-heart</v-icon>
               </v-btn>
 
-              <v-btn icon color="error" rounded @click="addToCart(product)" v-if="disabled">
+              <v-btn icon color="error" rounded @click="removeFromCart(product)" v-if="disabled">
                 <v-icon>mdi-cart-minus</v-icon>
               </v-btn>
 
@@ -43,28 +43,23 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 import DummyLoader from '@/components/DummyLoader'
 
 export default {
   name: 'ProductList',
-  computed: {
-    ...mapState(['products']),
-    // allProducts() {
-    //   return this.$store.getters.allProducts
-    // }
-  },
-  data() {
-    return {
-      timeOut: true,
-      disabled: false
-    }
-  },
+  computed: mapGetters ({
+    products: 'allProducts'
+  }),
+  data: () => ({
+    timeOut: true,
+    disabled: false
+  }),
   mounted() {
     setTimeout(() => (this.timeOut = false), 3000);
   },
   methods: {
-    addToCart: product => this.$store.dispatch('addToCart', product)
+    addToCart(product)  { this.$store.dispatch('addToCart', product)}
   },
   components: {
     DummyLoader
