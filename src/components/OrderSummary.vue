@@ -7,7 +7,7 @@
     <v-list-item-group>
       <v-list-item three-line>
         <v-list-item-content>
-          <v-list-item-title class="text-h6">
+          <v-list-item-title class="text-h6 mb-5">
             <span v-if="inCart.length == 1">{{ inCart.length }} Item</span>
             <span v-else>{{ inCart.length }} Items</span>
           </v-list-item-title>
@@ -16,9 +16,9 @@
             <span v-if="tax = inCart.length < 1">{{ 0 | currency }}</span>
             <span v-else>{{ inCart.length * 3 | currency }}</span>
           </v-list-item-title>
-          <v-divider class="mt-5"></v-divider>
+          <v-divider class="mt-5 mb-3"></v-divider>
           <v-list-item-title class="text-h6">
-            Total
+            Total: 
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
