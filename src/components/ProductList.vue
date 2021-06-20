@@ -22,17 +22,14 @@
           <v-card-actions>
               <v-spacer></v-spacer>
 
-              <v-btn icon color="red" disabled>
-                <v-icon>mdi-heart</v-icon>
+              <v-btn color="error" rounded @click="removeFromCart(product)" v-if="product.addedToCart">
+                Remove from Cart
               </v-btn>
 
-              <v-btn icon color="error" rounded @click="removeFromCart(product)" v-if="disabled">
-                <v-icon>mdi-cart-minus</v-icon>
+              <v-btn color="primary" rounded @click="addToCart(product)" v-else-if="!product.addedToCart">
+                Add to Cart
               </v-btn>
 
-              <v-btn icon color="primary" rounded @click="addToCart(product)" v-else>
-                <v-icon>mdi-cart-plus</v-icon>
-              </v-btn>
             </v-card-actions>
           <v-card-title>
           </v-card-title>
@@ -48,18 +45,27 @@ import DummyLoader from '@/components/DummyLoader'
 
 export default {
   name: 'ProductList',
-  computed: mapGetters ({
-    products: 'allProducts'
-  }),
+  computed: {
+    ...mapGetters ({
+      products: 'allProducts',
+      inCart: 'inCart'
+    })
+
+  },
   data: () => ({
     timeOut: true,
     disabled: false
   }),
   mounted() {
-    setTimeout(() => (this.timeOut = false), 3000);
+    setTimeout(() => (this.timeOut = false), 3000)
   },
   methods: {
-    addToCart(product)  { this.$store.dispatch('addToCart', product)}
+    addToCart(product) {
+      this.$store.dispatch('addToCart', product)
+    },
+    removeFromCart(product){
+      this.$store.dispatch('removeFromCart', product)
+    }
   },
   components: {
     DummyLoader

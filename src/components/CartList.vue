@@ -4,11 +4,11 @@
     outlined
   >
     <v-container fluid>
-      <h2 class="text-h5 primary--text ml-2 font-weight-bold">Shopping Cart</h2>
+      <h2 class="text-h5 primary--text ml-2 mb-3 font-weight-bold">Shopping Cart</h2>
       <v-row>
-        <v-col cols="7">
+        <v-col cols="7" v-if="inCart.length > 0">
           <v-divider></v-divider>
-          <v-list-item three-line v-for="(product, index) in inCart" :key="product.id">
+          <v-list-item three-line v-for="(product) in inCart" :key="product.id">
             <v-list-item-avatar
               tile
               size="100"
@@ -27,12 +27,16 @@
                 <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
               </v-list-item-content>
               <v-card-actions>
-                <v-btn rounded outlined color="red" align="right" @click="removeFromCart(index)">
+                <v-btn rounded outlined color="red" align="right" @click="removeFromCart(product)">
                   <v-icon class="mr-1">mdi-cart-minus</v-icon>
                   Remove
                 </v-btn>
               </v-card-actions>
             </v-list-item>
+          </v-col>
+          <v-col cols="7" v-else class="ml-2">
+            <v-divider class="mb-3"></v-divider>
+            <v-text>Cart is empty</v-text>
           </v-col>
         </v-row>
       </v-container>
@@ -48,8 +52,8 @@ export default {
     inCart: 'inCart'
   }),
   methods: {
-    removeFromCart(index){
-      this.$store.dispatch('removeFromCart', index)
+    removeFromCart(product){
+      this.$store.dispatch('removeFromCart', product)
     }
   }
 }

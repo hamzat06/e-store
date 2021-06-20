@@ -16,18 +16,12 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (cart.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue'),
-    children: [
-
-      {
-        path: '/checkout',
-        name: 'Checkout',
-        component: () => import(/* webpackChunkName: "checkout" */ '../views/Checkout.vue')
-      }
-
-      // ...other sub routes
-    ]
-
+    component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue')
+  },
+  {
+    path: '/cart/checkout',
+    name: 'Checkout',
+    component: () => import(/* webpackChunkName: "checkout" */ '../views/Checkout.vue')
   }
 ]
 

@@ -25,7 +25,7 @@
       <v-divider></v-divider>
 
       <v-card-text class="white--text">
-        copyright &copy; {{ new Date().getFullYear() }} — <strong>E-Store</strong>
+        copyright &copy; {{ new Date().getFullYear() }} — <strong>E-Shop</strong>
       </v-card-text>
     </v-container>
   </v-footer>
