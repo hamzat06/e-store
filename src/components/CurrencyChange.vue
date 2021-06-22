@@ -6,11 +6,13 @@
         sm="2"
       >
         <v-select
-          v-model="currency"
+          v-model="select"
           :items="items"
-          label="Currency"
-        >
-        </v-select>
+          item-text="currency"
+          item-value="abbr"
+          label="currency"
+          return-object
+        ></v-select>
       </v-col>
     </v-row>
 </template>
@@ -19,10 +21,11 @@
 export default {
   name: 'CurrencyChange',
   data: () => ({
-    currency: 'dollar',
-    currencyChosen: ['naira'],
-    items: ['usd', 'gbp'],
-    value: ['usd']
+    select: { currency: 'Florida', abbr: 'USD' },
+    items: [
+      { currency: 'Dollar', abbr: 'USD' },
+      { currency: 'Pounds Sterling', abbr: 'GBP' }
+    ],
   }) 
 }
 </script>
