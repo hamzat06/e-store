@@ -7,6 +7,7 @@
       </v-col>
       <v-col cols="4">
         <OrderSummary/>
+        <CheckOut/>
       </v-col>
     </v-row>
   </v-container>
@@ -15,10 +16,11 @@
 <script>
 import CartList from '@/components/CartList'
 import OrderSummary from '@/components/OrderSummary'
+import CheckOut from '../components/CheckOut.vue'
 
 export default {
   name: 'Cart',
-  components: { CartList, OrderSummary }
+  components: { CartList, OrderSummary, CheckOut }
 }
 </script>
 

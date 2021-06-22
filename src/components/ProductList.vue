@@ -48,7 +48,8 @@ export default {
   computed: {
     ...mapGetters ({
       products: 'allProducts',
-      inCart: 'inCart'
+      inCart: 'inCart',
+      currencyChange: 'currencyChange'
     })
 
   },
