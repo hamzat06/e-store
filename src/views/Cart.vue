@@ -16,7 +16,7 @@
 <script>
 import CartList from '@/components/CartList'
 import OrderSummary from '@/components/OrderSummary'
-import CheckOut from '../components/CheckOut.vue'
+import CheckOut from '@/components/CheckOut.vue'
 
 export default {
   name: 'Cart',

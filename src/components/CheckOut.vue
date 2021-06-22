@@ -2,6 +2,8 @@
   <v-btn
     class="mt-3"
     color="success"
+    :disabled="inCart.length < 1"
+    @click="checkout"
   >
     Proceed to Checkout
     <v-icon>mdi-chevron-right</v-icon>
@@ -9,6 +11,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import axios from 'axios'
 
 export default {
@@ -17,11 +20,14 @@ export default {
     api: 'http://localhost:3000/checkout/'
   }),
   methods: {
-    async checkout () {
+      async checkout () {
       let inCart = this.$store.getters.inCart
-      const {data} = await axios.post(this.api, inCart)
+      const {data} = await axios.post(this.api, inCart).then(this.$router.push('/cart/orderview'))
       console.log(data)
     }
+  },
+  computed: {
+    ...mapGetters({ inCart: 'inCart' })
   }
 }
 </script>
