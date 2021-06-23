@@ -77,7 +77,8 @@ export default new Vuex.Store({
     selected: { currency: 'Dollar', abbr: 'USD' },
     allCurrency: [
       { currency: 'Dollar', abbr: 'USD' },
-      { currency: 'Pounds', abbr: 'GBP'}
+      { currency: 'Pounds', abbr: 'GBP'},
+      { currency: 'Naira', abbr: 'NGN' }
     ],
     checkout: []
   },
