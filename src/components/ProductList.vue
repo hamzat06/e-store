@@ -1,6 +1,5 @@
 <template lang="html">
   <v-container class="my-10">
-    £
     <v-row v-if="timeOut">
       <DummyLoader />
     </v-row>
@@ -14,7 +13,7 @@
 
           <v-card-text class="pt-3">
             <h2 class="text-h6 primary--text" v-text="product.name"></h2>
-            <p class="font-weight-bold mt-1">{{ product.price | currency }}</p>
+            <p class="font-weight-bold mt-1">{{ product.price | currency(selected) }}</p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           </v-card-text>
 
@@ -52,7 +51,8 @@ export default {
     ...mapGetters ({
       products: 'allProducts',
       inCart: 'inCart',
-      currencyChange: 'currencyChange'
+      currencyChange: 'currencyChange',
+      selected: 'selected'
     })
 
   },
@@ -74,16 +74,16 @@ export default {
   components: {
     DummyLoader,
   },
-  filters: {
-    currency(value, selected) {
-      if(selected == 'USD') {
-        return `$${value}`
-      }
-      if(selected == 'GBP') {
-        return `£${value = value * 0.3 }`
-      }
-    }
-  }
+  // filters: {
+  //   currency(value, selected) {
+  //     if(selected == 'USD') {
+  //       return `$${value}`
+  //     }
+  //     if(selected == 'GBP') {
+  //       return `£${value = value * 0.5 }`
+  //     }
+  //   }
+  // }
 }
 </script>
 

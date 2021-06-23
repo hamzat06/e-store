@@ -3,9 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
-import Vue2Filters from 'vue2-filters'
-
-Vue.use(Vue2Filters)
+import './modules/currency'
 
 Vue.config.productionTip = false
 

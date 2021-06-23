@@ -12,12 +12,15 @@
             <span v-else>{{ quantity }} Items</span>
           </v-list-item-title>
           <v-list-item-title class="text-h6">
-            Tax:
-            <span>{{ tax | currency }}</span>
+            Total: <span>{{ productsPrice | currency(selected) }}</span>
           </v-list-item-title>
+          <v-list-item-title class="text-h6">
+            Tax: <span>{{ tax | currency(selected) }}</span>
+          </v-list-item-title>
+          
           <v-divider class="mt-5 mb-3"></v-divider>
           <v-list-item-title class="text-h6">
-            Total: {{ calcSum | currency }}
+            Sub-Total: {{ calcSum | currency(selected) }}
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -30,7 +33,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'OrderSummary',
   computed: {
-    ...mapGetters({ inCart : 'inCart'}),
+    ...mapGetters({ inCart : 'inCart', selected: 'selected'}),
     calcSum() {
       let subTotal = 0
       let quantity = 0
@@ -54,6 +57,13 @@ export default {
         quantity += product.quantity
       })
       return quantity
+    },
+    productsPrice() {
+      let total = 0
+      this.$store.getters.inCart.forEach(product => {
+        total += (product.price * product.quantity)
+      })
+      return total
     }
    
   }

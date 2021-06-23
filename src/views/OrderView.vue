@@ -2,7 +2,7 @@
   <v-container>
     <h2 class="text-h5">Order View Page</h2>
     <span>  
-      {{ inCart | json }}
+      {{ checkout | json }}
     </span>
   </v-container>
 </template>
@@ -11,13 +11,8 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'Orderview',
-  filters: {
-    json(value) {
-      return JSON.stringify(value)
-    }
-  },
   computed: {
-    ...mapGetters({ inCart: 'inCart' })
+    ...mapGetters({ checkout: 'checkout' })
   }
 }
 </script>

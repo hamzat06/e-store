@@ -22,7 +22,7 @@
                   {{ product.name }}
                 </div>
                 <v-list-item-title class="text-h5">
-                  {{ product.price | currency }}
+                  {{ product.price | currency(selected) }}
                 </v-list-item-title>
                 <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
               </v-list-item-content>
@@ -58,7 +58,8 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'CartList',
   computed: mapGetters ({
-    inCart: 'inCart'
+    inCart: 'inCart',
+    selected: 'selected'
   }),
   methods: {
     removeFromCart(product){

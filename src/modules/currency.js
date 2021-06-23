@@ -1,23 +1,17 @@
-import VueI18n from "vue-i18n"
+import Vue from 'vue'
 
-const numberFormats = {
-  'en-US': {
-    currency: {
-      style: 'currency',
-      currency: 'USD'
-    }
-  },
-  'en-UK': {
-    currency: {
-      style: 'currency',
-      currency: 'GBP',
-      currencyDisplay: 'symbol'
-    }
+Vue.filter('currency', function(value, selectedCurrency){
+  let formatter = new Intl.NumberFormat('en', {
+    minimumFractionDigits: 0
+  })
+  if (selectedCurrency.abbr == 'USD') {
+    return `$${formatter.format(value)}`
   }
-}
-
-const i18n = new VueI18n({
-  numberFormats
+  if (selectedCurrency.abbr == 'GBP') {
+    return `£${formatter.format(value = value * 0.5) }`
+  }
 })
 
-export default i18n
+Vue.filter('json', function(value) {
+  return JSON.stringify(value)
+})

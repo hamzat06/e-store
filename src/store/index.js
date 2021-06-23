@@ -45,6 +45,7 @@ export default new Vuex.Store({
         name: 'Samsung Galaxy A20',
         price: 499,
         category: 'Phones',
+        quantity: 1,
         addedToCart: false
       },
       {
@@ -73,15 +74,19 @@ export default new Vuex.Store({
       }
     ],
     inCart: [],
-    snackbar: '',
-    action: ''
+    selected: { currency: 'Dollar', abbr: 'USD' },
+    allCurrency: [
+      { currency: 'Dollar', abbr: 'USD' },
+      { currency: 'Pounds', abbr: 'GBP'}
+    ],
+    checkout: []
   },
   getters:{
     allProducts: state => state.products,
     inCart: state => state.inCart,
-    currencyChange: state => state.currencyChange,
-    snackbar: state => state.snackbar,
-    action: state => state.action
+    selected: state => state.selected,
+    allCurrency: state => state.allCurrency,
+    checkout: state => state.checkout
   },
   mutations: {
     increment: state => state.count++,
@@ -120,6 +125,13 @@ export default new Vuex.Store({
           }
         }
       }
+    },
+    SELECTED_CURRENCY: (state, select) => {
+      state.selected = select
+    },
+    CLEAR_CART: (state) => {
+      state.checkout.push(state.inCart)
+      state.inCart = []
     }
   },
   actions: {
@@ -134,6 +146,12 @@ export default new Vuex.Store({
     },
     decreaseCount(context, product) {
       context.commit('DECREASE_COUNT', product)
+    },
+    selectedCurrency(context, select) {
+      context.commit('SELECTED_CURRENCY', select)
+    },
+    clearCart(context) {
+      context.commit('CLEAR_CART')
     }
   },
   modules: {

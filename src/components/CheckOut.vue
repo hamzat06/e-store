@@ -22,7 +22,10 @@ export default {
   methods: {
       async checkout () {
       let inCart = this.$store.getters.inCart
-      const {data} = await axios.post(this.api, inCart).then(this.$router.push('/cart/orderview'))
+      const {data} = await axios.post(this.api, inCart)
+      .then(this.$router.push('/cart/orderview'))
+      .then(this.$store.dispatch('clearCart'))
+
       console.log(data)
     }
   },

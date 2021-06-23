@@ -7,30 +7,36 @@
       >
         <v-select
           v-model="select"
-          :items="items"
+          :items="allCurrency"
           item-text="currency"
           item-value="abbr"
           label="currency"
           return-object
-          @change="alertMe"
+          @change="selectedCurrency(select)"
         ></v-select>
       </v-col>
     </v-row>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'CurrencyChange',
   data: () => ({
-    select: { currency: 'Dollar', abbr: 'USD' },
-    items: [
-      { currency: 'Dollar', abbr: 'USD' },
-      { currency: 'Pounds', abbr: 'GBP' }
-    ],
+    select: '',
+    allCurrency: []
   }),
+  computed: {
+    ...mapState({ selected: 'selected'})
+  },
+  created() {
+    this.select = this.$store.getters.selected,
+    this.allCurrency = this.$store.getters.allCurrency
+  },
   methods: {
-    alertMe(){
-      alert(this.select.currency)
+    selectedCurrency(select) {
+      this.$store.dispatch('selectedCurrency', select)
     }
   }
 }
