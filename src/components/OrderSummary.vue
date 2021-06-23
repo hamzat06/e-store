@@ -12,7 +12,7 @@
             <span v-else>{{ quantity }} Items</span>
           </v-list-item-title>
           <v-list-item-title class="text-h6">
-            Total: <span>{{ productsPrice | currency(selected) }}</span>
+            Sub-total: <span>{{ productsPrice | currency(selected) }}</span>
           </v-list-item-title>
           <v-list-item-title class="text-h6">
             Tax: <span>{{ tax | currency(selected) }}</span>
@@ -20,7 +20,7 @@
           
           <v-divider class="mt-5 mb-3"></v-divider>
           <v-list-item-title class="text-h6">
-            Sub-Total: {{ calcSum | currency(selected) }}
+            Total: {{ calcSum | currency(selected) }}
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -35,13 +35,13 @@ export default {
   computed: {
     ...mapGetters({ inCart : 'inCart', selected: 'selected'}),
     calcSum() {
-      let subTotal = 0
+      let total = 0
       let quantity = 0
       this.$store.getters.inCart.forEach(product => {
-        subTotal += product.price 
+        total += product.price 
         quantity += product.quantity
       })
-      return subTotal + (quantity * 1.5)
+      return total + (quantity * 1.5)
     },
 
     tax() {
@@ -59,11 +59,11 @@ export default {
       return quantity
     },
     productsPrice() {
-      let total = 0
+      let subtotal = 0
       this.$store.getters.inCart.forEach(product => {
-        total += (product.price * product.quantity)
+        subtotal += product.price
       })
-      return total
+      return subtotal
     }
    
   }

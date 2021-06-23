@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 Vue.filter('currency', function(value, selectedCurrency){
-  let formatter = new Intl.NumberFormat('en', {
+  let formatter = new Intl.NumberFormat({
     minimumFractionDigits: 0
   })
   if (selectedCurrency.abbr == 'USD') {
