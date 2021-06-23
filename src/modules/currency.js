@@ -8,7 +8,10 @@ Vue.filter('currency', function(value, selectedCurrency){
     return `$${formatter.format(value)}`
   }
   if (selectedCurrency.abbr == 'GBP') {
-    return `£${formatter.format(value = value * 0.5) }`
+    return `£${formatter.format(value = value * 0.72) }`
+  }
+  if  (selectedCurrency.abbr == 'NGN') {
+    return `₦${formatter.format(value = value * 410.25) }`
   }
 })
 
