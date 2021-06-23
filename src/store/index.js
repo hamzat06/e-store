@@ -14,8 +14,7 @@ export default new Vuex.Store({
         price: 27,
         category: 'Clothing',
         quantity: 1,
-        addedToCart: false,
-        disable: false
+        addedToCart: false
       },
       {
         id: 2,
@@ -23,8 +22,7 @@ export default new Vuex.Store({
         price: 399,
         category: 'Phones',
         quantity: 1,
-        addedToCart: false,
-        disable: false
+        addedToCart: false
       },
       {
         id: 3,
@@ -32,8 +30,7 @@ export default new Vuex.Store({
         price: 70,
         category: 'Clothing',
         quantity: 1,
-        addedToCart: false,
-        disable: false
+        addedToCart: false
       },
       {
         id: 4,
@@ -41,16 +38,14 @@ export default new Vuex.Store({
         price: 299,
         category: 'Laptops',
         quantity: 1,
-        addedToCart: false,
-        disable: false
+        addedToCart: false
       },
       {
         id: 5,
         name: 'Samsung Galaxy A20',
         price: 499,
         category: 'Phones',
-        addedToCart: false,
-        disable: false
+        addedToCart: false
       },
       {
         id: 6,
@@ -58,8 +53,7 @@ export default new Vuex.Store({
         price: 100,
         category: 'Console',
         quantity: 1,
-        addedToCart: false,
-        disable: false
+        addedToCart: false
       },
       {
         id: 7,
@@ -67,8 +61,7 @@ export default new Vuex.Store({
         price: 30,
         category: 'Clothing',
         quantity: 1,
-        addedToCart: false,
-        disable: false
+        addedToCart: false
       },
       {
         id: 8,
@@ -76,17 +69,19 @@ export default new Vuex.Store({
         price: 287,
         category: 'Console',
         quantity: 1,
-        addedToCart: false,
-        disable: false
+        addedToCart: false
       }
     ],
-    inCart: []
+    inCart: [],
+    snackbar: '',
+    action: ''
   },
   getters:{
     allProducts: state => state.products,
     inCart: state => state.inCart,
     currencyChange: state => state.currencyChange,
-    disabled: state => state.disabled
+    snackbar: state => state.snackbar,
+    action: state => state.action
   },
   mutations: {
     increment: state => state.count++,
@@ -98,7 +93,6 @@ export default new Vuex.Store({
         state.inCart.splice(productIndex, 1)
         product.addedToCart = false
       }
-      
     },
     ADD_TO_CART: (state, product) => {
       let found = state.inCart.find(prod => prod.id == product.id)
@@ -113,7 +107,6 @@ export default new Vuex.Store({
       let found = state.inCart.find(prod => prod.id == product.id)
       if (found) {
         product.quantity++
-        product.disable = false
         product.price = product.price * product.quantity
       }
     },
@@ -124,9 +117,6 @@ export default new Vuex.Store({
           product.price = product.price / product.quantity
           if(product.quantity > 1) {
             product.quantity--
-            product.disable = false
-          } else {
-            product.disable = true
           }
         }
       }

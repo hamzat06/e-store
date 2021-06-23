@@ -27,7 +27,7 @@
                 <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
               </v-list-item-content>
               <v-card-actions>
-                <v-btn rounded color="warning" align="right" @click="decrease(product)" :disabled="product.disable">
+                <v-btn rounded color="warning" align="right" @click="decrease(product)">
                   <v-icon class="mr-1">mdi-minus</v-icon>
                 </v-btn>
                 <span class="mx-2 text-h5">{{ product.quantity }}</span>

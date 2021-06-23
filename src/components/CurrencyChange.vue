@@ -12,6 +12,7 @@
           item-value="abbr"
           label="currency"
           return-object
+          @change="alertMe"
         ></v-select>
       </v-col>
     </v-row>
@@ -21,12 +22,17 @@
 export default {
   name: 'CurrencyChange',
   data: () => ({
-    select: { currency: 'Florida', abbr: 'USD' },
+    select: { currency: 'Dollar', abbr: 'USD' },
     items: [
       { currency: 'Dollar', abbr: 'USD' },
-      { currency: 'Pounds Sterling', abbr: 'GBP' }
+      { currency: 'Pounds', abbr: 'GBP' }
     ],
-  }) 
+  }),
+  methods: {
+    alertMe(){
+      alert(this.select.currency)
+    }
+  }
 }
 </script>
 

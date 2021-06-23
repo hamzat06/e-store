@@ -1,5 +1,6 @@
 <template lang="html">
   <v-container class="my-10">
+    £
     <v-row v-if="timeOut">
       <DummyLoader />
     </v-row>
@@ -22,12 +23,14 @@
           <v-card-actions>
               <v-spacer></v-spacer>
 
-              <v-btn color="error" rounded @click="removeFromCart(product)" v-if="product.addedToCart">
-                Remove from Cart
+              <v-btn color="warning" @click="updateCart" v-if="product.addedToCart">
+                <v-icon class="mr-2">mdi-cart</v-icon>
+                Update cart
               </v-btn>
 
-              <v-btn color="primary" rounded @click="addToCart(product)" v-else-if="!product.addedToCart">
-                Add to Cart
+              <v-btn color="primary" @click="addToCart(product)" v-else-if="!product.addedToCart">
+                <v-icon class="mr-2">mdi-cart-plus</v-icon>
+                Add to cart
               </v-btn>
 
             </v-card-actions>
@@ -64,12 +67,22 @@ export default {
     addToCart(product) {
       this.$store.dispatch('addToCart', product)
     },
-    removeFromCart(product){
-      this.$store.dispatch('removeFromCart', product)
-    }
+    updateCart(){
+      this.$router.push('cart')
+    },
   },
   components: {
-    DummyLoader
+    DummyLoader,
+  },
+  filters: {
+    currency(value, selected) {
+      if(selected == 'USD') {
+        return `$${value}`
+      }
+      if(selected == 'GBP') {
+        return `£${value = value * 0.3 }`
+      }
+    }
   }
 }
 </script>
